@@ -131,7 +131,7 @@ function initTypingEffect() {
             }
         };
         
-        // Start typing after a delay
+        // Start typing after a delay chose
         setTimeout(typeWriter, 500);
     }
 }
