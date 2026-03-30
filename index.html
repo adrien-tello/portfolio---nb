@@ -4,32 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adrien Tello - Software Engineer</title>
+    <meta name="description" content="Adrien Tello - Software Engineering Student & Full-Stack Developer">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mediaqueri.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop" onclick="scrollToTop()" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <!-- Theme Toggle Button -->
-    <div class="theme-toggle" onclick="toggleTheme()">
+    <div class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
         <i class="fas fa-sun sun-icon"></i>
         <i class="fas fa-moon moon-icon"></i>
     </div>
 
+    <!-- Desktop Nav -->
     <nav id="desktop-nav">
         <div class="logo-container">
             <img src="assets/TK.jpg" alt="Logo" class="logo-img">
             <div class="logo">Adrien Tello</div>
         </div>
-        <div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </nav>
-    
+
+    <!-- Mobile Nav -->
     <nav id="hamburger-nav">
         <div class="logo-container">
             <img src="assets/TK.jpg" alt="Logo" class="logo-img">
@@ -55,25 +62,27 @@
     <!-- Hero Section -->
     <section id="profile">
         <div class="section__pic-container">
-            <img src="assets/retouch_2024040215354418.jpg" alt="Adrien Tello profile picture">
+            <img src="assets/tk.jpeg" alt="Adrien Tello profile picture">
         </div>
         <div class="section__text">
             <p class="section__text__p1">Hello, I'm</p>
             <h1 class="title">Adrien Tello</h1>
-            <p class="section__text__p2">Software Engineering Student</p>
+            <p class="section__text__p2" id="typed-text">Software Engineering Student</p>
             <div class="btn-container">
-                <button class="btn btn-color-2" onclick="window.open('../assets/resume.pdf')">
-                    Download CV
+                <button class="btn btn-color-2" onclick="window.open('assets/resume-example.pdf')">
+                    <i class="fas fa-download"></i> Download CV
                 </button>
                 <button class="btn btn-color-1" onclick="location.href='#contact'">
-                    Contact Info
+                    <i class="fas fa-envelope"></i> Contact Info
                 </button>
             </div>
             <div id="socials-container">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" 
-                     alt="My LinkedIn profile" class="icon" onclick="location.href='https://linkedin.com/'">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" 
-                     alt="My Github profile" class="icon" onclick="location.href='https://https://github.com/adrien-tello?tab=repositories'">
+                <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin icon"></i>
+                </a>
+                <a href="https://github.com/adrien-tello?tab=repositories" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github icon"></i>
+                </a>
             </div>
         </div>
     </section>
@@ -91,19 +100,24 @@
                     <div class="details-container">
                         <i class="fas fa-award icon"></i>
                         <h3>Experience</h3>
-                        <p>2+ years <br>Software Development</p>
+                        <p>2+ years<br>Software Development</p>
                     </div>
                     <div class="details-container">
                         <i class="fas fa-graduation-cap icon"></i>
                         <h3>Education</h3>
                         <p>B.Sc. Software Engineering<br>Computer Science</p>
                     </div>
+                    <div class="details-container">
+                        <i class="fas fa-code icon"></i>
+                        <h3>Projects</h3>
+                        <p>10+ Completed<br>Personal & Academic</p>
+                    </div>
                 </div>
                 <div class="text-container">
                     <p>
-                        I'm a passionate Software Engineering student with a strong foundation in full-stack development. 
-                        I enjoy solving complex problems and building innovative solutions using modern technologies. 
-                        My experience spans across web development, mobile applications, and software architecture. 
+                        I'm a passionate Software Engineering student with a strong foundation in full-stack development.
+                        I enjoy solving complex problems and building innovative solutions using modern technologies.
+                        My experience spans web development, mobile applications, and software architecture.
                         I'm always eager to learn new technologies and contribute to meaningful projects.
                     </p>
                 </div>
@@ -123,45 +137,27 @@
                     <div class="article-container">
                         <article>
                             <i class="fab fa-html5 icon"></i>
-                            <div>
-                                <h3>HTML</h3>
-                                <p>Experienced</p>
-                            </div>
+                            <div><h3>HTML</h3><p>Experienced</p></div>
                         </article>
                         <article>
                             <i class="fab fa-css3-alt icon"></i>
-                            <div>
-                                <h3>CSS</h3>
-                                <p>Experienced</p>
-                            </div>
+                            <div><h3>CSS</h3><p>Experienced</p></div>
                         </article>
                         <article>
                             <i class="fab fa-js-square icon"></i>
-                            <div>
-                                <h3>JavaScript</h3>
-                                <p>Intermediate</p>
-                            </div>
+                            <div><h3>JavaScript</h3><p>Intermediate</p></div>
                         </article>
                         <article>
                             <i class="fab fa-react icon"></i>
-                            <div>
-                                <h3>React</h3>
-                                <p>Intermediate</p>
-                            </div>
+                            <div><h3>React</h3><p>Intermediate</p></div>
                         </article>
                         <article>
-                            <i class="fab fa-js-square icon"></i>
-                            <div>
-                                <h3>TypeScript</h3>
-                                <p>Basic</p>
-                            </div>
+                            <i class="fas fa-code icon"></i>
+                            <div><h3>TypeScript</h3><p>Basic</p></div>
                         </article>
                         <article>
                             <i class="fab fa-sass icon"></i>
-                            <div>
-                                <h3>Sass</h3>
-                                <p>Intermediate</p>
-                            </div>
+                            <div><h3>Sass</h3><p>Intermediate</p></div>
                         </article>
                     </div>
                 </div>
@@ -170,45 +166,27 @@
                     <div class="article-container">
                         <article>
                             <i class="fab fa-node-js icon"></i>
-                            <div>
-                                <h3>Node.js</h3>
-                                <p>Intermediate</p>
-                            </div>
+                            <div><h3>Node.js</h3><p>Intermediate</p></div>
                         </article>
                         <article>
                             <i class="fab fa-python icon"></i>
-                            <div>
-                                <h3>Python</h3>
-                                <p>Intermediate</p>
-                            </div>
+                            <div><h3>Python</h3><p>Intermediate</p></div>
                         </article>
                         <article>
                             <i class="fab fa-java icon"></i>
-                            <div>
-                                <h3>Java</h3>
-                                <p>Intermediate</p>
-                            </div>
+                            <div><h3>Java</h3><p>Intermediate</p></div>
                         </article>
                         <article>
                             <i class="fas fa-database icon"></i>
-                            <div>
-                                <h3>MongoDB</h3>
-                                <p>Basic</p>
-                            </div>
+                            <div><h3>MongoDB</h3><p>Basic</p></div>
                         </article>
                         <article>
                             <i class="fas fa-database icon"></i>
-                            <div>
-                                <h3>PostgreSQL</h3>
-                                <p>Basic</p>
-                            </div>
+                            <div><h3>PostgreSQL</h3><p>Basic</p></div>
                         </article>
                         <article>
                             <i class="fab fa-git-alt icon"></i>
-                            <div>
-                                <h3>Git</h3>
-                                <p>Intermediate</p>
-                            </div>
+                            <div><h3>Git</h3><p>Intermediate</p></div>
                         </article>
                     </div>
                 </div>
@@ -221,69 +199,85 @@
     <section id="projects">
         <p class="section__text__p1">Browse My Recent</p>
         <h1 class="title">Projects</h1>
-        <div class="experience-details-container">
-            <div class="about-containers">
-                <div class="details-container color-container">
-                    <div class="article-container">
-                        <img src="assets/Mobile .png" 
-                             alt="Project 1" class="project-img">
-                    </div>
-                    <h2 class="experience-sub-title project-title">Cooking Platform</h2>
-                    <div class="btn-container">
-                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/adrien-tello/HOMECHEF-REPO'">
-                            Github
-                        </button>
-                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://homechef-three.vercel.app/'">
-                            Live Demo
-                        </button>
+        <div class="projects-grid">
+            <div class="details-container color-container">
+                <div class="project-img-wrapper">
+                    <img src="assets/Mobile .png" alt="Cooking Platform" class="project-img">
+                    <div class="project-overlay">
+                        <p>A full-stack cooking platform with recipes, user profiles, and meal planning.</p>
                     </div>
                 </div>
-                <div class="details-container color-container">
-                    <div class="article-container">
-                        <img src="assets/project-2.png" 
-                             alt="Project 2" class="project-img">
-                    </div>
-                    <h2 class="experience-sub-title project-title">Task Management App</h2>
-                    <div class="btn-container">
-                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/'">
-                            Github
-                        </button>
-                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/'">
-                            Live Demo
-                        </button>
-                    </div>
+                <h2 class="experience-sub-title project-title">Cooking Platform</h2>
+                <div class="project-tags">
+                    <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MongoDB</span>
                 </div>
-                <div class="details-container color-container">
-                    <div class="article-container">
-                        <img src="assets/project-1.png" 
-                             alt="Project 3" class="project-img">
-                    </div>
-                    <h2 class="experience-sub-title project-title">Weather Dashboard</h2>
-                    <div class="btn-container">
-                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/adrien-tello/KFC.git'">
-                            Github
-                        </button>
-                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/'">
-                            Live Demo
-                        </button>
-                    </div>
+                <div class="btn-container">
+                    <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/adrien-tello/HOMECHEF-REPO'">
+                        <i class="fab fa-github"></i> Github
+                    </button>
+                    <button class="btn btn-color-1 project-btn" onclick="location.href='https://homechef-three.vercel.app/'">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </button>
                 </div>
             </div>
-        </div>
-         <div class="details-container color-container">
-                    <div class="article-container">
-                        <img src="assets/project-1.png" 
-                             alt="Project 3" class="project-img">
+            <div class="details-container color-container">
+                <div class="project-img-wrapper">
+                    <img src="assets/project-2.png" alt="Task Management App" class="project-img">
+                    <div class="project-overlay">
+                        <p>A productivity app for managing tasks, deadlines, and team collaboration.</p>
                     </div>
-                    <h2 class="experience-sub-title project-title">Weather Dashboard</h2>
-                    <div class="btn-container">
-                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/adrien-tello/HTEC.git'">
-                            Github
-                        </button>
-                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/'">
-                            Live Demo
-                        </button>
+                </div>
+                <h2 class="experience-sub-title project-title">Task Management App</h2>
+                <div class="project-tags">
+                    <span class="tag">JavaScript</span><span class="tag">CSS</span><span class="tag">HTML</span>
+                </div>
+                <div class="btn-container">
+                    <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/'">
+                        <i class="fab fa-github"></i> Github
+                    </button>
+                    <button class="btn btn-color-1 project-btn" onclick="location.href='https://github.com/'">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </button>
+                </div>
+            </div>
+            <div class="details-container color-container">
+                <div class="project-img-wrapper">
+                    <img src="assets/project-1.png" alt="Weather Dashboard" class="project-img">
+                    <div class="project-overlay">
+                        <p>A weather dashboard with real-time data, forecasts, and location search.</p>
                     </div>
+                </div>
+                <h2 class="experience-sub-title project-title">Weather Dashboard</h2>
+                <div class="project-tags">
+                    <span class="tag">React</span><span class="tag">API</span><span class="tag">CSS</span>
+                </div>
+                <div class="btn-container">
+                    <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/adrien-tello/KFC.git'">
+                        <i class="fab fa-github"></i> Github
+                    </button>
+                    <button class="btn btn-color-1 project-btn" onclick="location.href='https://github.com/'">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </button>
+                </div>
+            </div>
+            <div class="details-container color-container">
+                <div class="project-img-wrapper">
+                    <img src="assets/project-3.png" alt="E-Commerce Site" class="project-img">
+                    <div class="project-overlay">
+                        <p>A responsive e-commerce site with cart, checkout, and product filtering.</p>
+                    </div>
+                </div>
+                <h2 class="experience-sub-title project-title">E-Commerce Site</h2>
+                <div class="project-tags">
+                    <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span>
+                </div>
+                <div class="btn-container">
+                    <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/adrien-tello/HTEC.git'">
+                        <i class="fab fa-github"></i> Github
+                    </button>
+                    <button class="btn btn-color-1 project-btn" onclick="location.href='https://github.com/'">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </button>
                 </div>
             </div>
         </div>
@@ -294,31 +288,50 @@
     <section id="contact">
         <p class="section__text__p1">Get in Touch</p>
         <h1 class="title">Contact Me</h1>
-        <div class="contact-info-upper-container">
-            <div class="contact-info-container">
-                <i class="fas fa-envelope icon contact-icon email-icon"></i>
-                <p><a href="mailto:adrien.tello@example.com">adrientello5@gmail.com</a></p>
+        <div class="contact-wrapper">
+            <div class="contact-info-upper-container">
+                <div class="contact-info-container">
+                    <i class="fas fa-envelope icon contact-icon"></i>
+                    <p><a href="mailto:adrientello5@gmail.com">adrientello5@gmail.com</a></p>
+                </div>
+                <div class="contact-info-container">
+                    <i class="fab fa-linkedin icon contact-icon"></i>
+                    <p><a href="https://www.linkedin.com" target="_blank">LinkedIn</a></p>
+                </div>
+                <div class="contact-info-container">
+                    <i class="fab fa-github icon contact-icon"></i>
+                    <p><a href="https://github.com/adrien-tello" target="_blank">GitHub</a></p>
+                </div>
             </div>
-            <div class="contact-info-container">
-                <i class="fab fa-linkedin icon contact-icon"></i>
-                <p><a href="https://www.linkedin.com">LinkedIn</a></p>
-            </div>
+            <form class="contact-form" id="contactForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-color-1 form-submit-btn">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+                <p class="form-status" id="formStatus"></p>
+            </form>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <nav>
-            <div class="nav-links-container">
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </nav>
-        <p>Copyright © 2024 Adrien Tello. All Rights Reserved.</p>
+        <p>Copyright &copy; 2024 Adrien Tello. All Rights Reserved.</p>
     </footer>
 
     <script src="script.js"></script>

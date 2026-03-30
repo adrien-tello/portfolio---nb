@@ -1,137 +1,129 @@
-// Hamburger Menu Toggle
-function toggleMenu() {
-    const menu = document.querySelector('.menu-links');
-    const icon = document.querySelector('.hamburger-icon');
-    
-    menu.classList.toggle('open');
-    icon.classList.toggle('open');
-}
-
-// Theme Toggle Function
-function toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-}
-
-// Close menu when clicking outside
-document.addEventListener('click', function(event) {
-    const menu = document.querySelector('.menu-links');
-    const hamburgerMenu = document.querySelector('.hamburger-menu');
-    
-    if (!hamburgerMenu.contains(event.target) && menu.classList.contains('open')) {
-        toggleMenu();
-    }
-});
-
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
-
-// Intersection Observer for scroll animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('animated');
-            
-            // Add stagger effect for multiple items
-            if (entry.target.classList.contains('stagger-container')) {
-                const items = entry.target.querySelectorAll('.stagger-item');
-                items.forEach((item, index) => {
-                    setTimeout(() => {
-                        item.classList.add('animate');
-                    }, index * 100);
-                });
-            }
-        }
-    });
-}, observerOptions);
-
-// Initialize everything when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    // Load saved theme
-    initTheme();
-    
-    // Add animation classes to elements
-    const animateElements = document.querySelectorAll('section, .details-container, .btn, .icon');
-    animateElements.forEach(el => {
-        el.classList.add('animate-on-scroll');
-        observer.observe(el);
-    });
-    
-    // Add stagger animation to experience articles
-    const experienceContainers = document.querySelectorAll('.article-container');
-    experienceContainers.forEach(container => {
-        container.classList.add('stagger-container');
-        const articles = container.querySelectorAll('article');
-        articles.forEach(article => {
-            article.classList.add('stagger-item');
-        });
-        observer.observe(container);
-    });
-    
-    // Initialize typing effect
-    initTypingEffect();
-    
-    // Initialize progress bars
-    initProgressBars();
-    
-    // Initialize card hover effects
-    initCardHoverEffects();
-    
-    // Initialize navbar scroll effect
-    initNavbarScrollEffect();
-    
-    // Initialize loading animations
-    initLoadingAnimations();
-});
-
-// Initialize theme from localStorage
+// ── Theme ──────────────────────────────────────────────
 function initTheme() {
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
+    const saved = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
 }
 
-// Typing effect for title
-function initTypingEffect() {
-    const title = document.querySelector('.title');
-    if (title && !title.classList.contains('typing-initialized')) {
-        const text = title.textContent;
-        title.textContent = '';
-        title.classList.add('typing-effect', 'typing-initialized');
-        
-        let i = 0;
-        const typeWriter = () => {
-            if (i < text.length) {
-                title.textContent += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
-            } else {
-                // Remove cursor after typing is complete
-                setTimeout(() => {
-                    title.classList.remove('typing-effect');
-                }, 1000);
-            }
-        };
-        
-        // Start typing after a delay chose
-        setTimeout(typeWriter, 500);
-    }
+function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
 }
+
+// ── Hamburger ──────────────────────────────────────────
+function toggleMenu() {
+    document.querySelector('.menu-links').classList.toggle('open');
+    document.querySelector('.hamburger-icon').classList.toggle('open');
+}
+
+document.addEventListener('click', (e) => {
+    const menu = document.querySelector('.menu-links');
+    const hamburger = document.querySelector('.hamburger-menu');
+    if (menu?.classList.contains('open') && !hamburger?.contains(e.target)) toggleMenu();
+});
+
+// ── Scroll to Top ──────────────────────────────────────
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── Navbar scroll effects ──────────────────────────────
+function initNavbar() {
+    const desktopNav = document.getElementById('desktop-nav');
+    const hamburgerNav = document.getElementById('hamburger-nav');
+    const scrollBtn = document.getElementById('scrollTop');
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+
+        // Scrolled class
+        [desktopNav, hamburgerNav].forEach(n => n?.classList.toggle('scrolled', scrollY > 50));
+
+        // Scroll-to-top visibility
+        scrollBtn?.classList.toggle('visible', scrollY > 400);
+
+        // Active nav link
+        let current = '';
+        sections.forEach(sec => {
+            if (scrollY >= sec.offsetTop - 120) current = sec.getAttribute('id');
+        });
+        navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+        });
+    });
+}
+
+// ── Typed text effect ──────────────────────────────────
+function initTypedText() {
+    const el = document.getElementById('typed-text');
+    if (!el) return;
+    const phrases = ['Software Engineering Student', 'Full-Stack Developer', 'Problem Solver', 'Open Source Enthusiast'];
+    let phraseIndex = 0, charIndex = 0, deleting = false;
+
+    function type() {
+        const phrase = phrases[phraseIndex];
+        el.textContent = deleting ? phrase.slice(0, charIndex--) : phrase.slice(0, charIndex++);
+
+        if (!deleting && charIndex === phrase.length + 1) {
+            deleting = true;
+            setTimeout(type, 1800);
+        } else if (deleting && charIndex === 0) {
+            deleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            setTimeout(type, 400);
+        } else {
+            setTimeout(type, deleting ? 60 : 100);
+        }
+    }
+    setTimeout(type, 800);
+}
+
+// ── Fade-in on scroll ──────────────────────────────────
+function initFadeIn() {
+    const targets = document.querySelectorAll(
+        'section, .details-container, article, .color-container, .contact-info-container, .contact-form'
+    );
+    targets.forEach(el => el.classList.add('fade-in'));
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    targets.forEach(el => observer.observe(el));
+}
+
+// ── Contact Form ───────────────────────────────────────
+function handleFormSubmit(e) {
+    e.preventDefault();
+    const status = document.getElementById('formStatus');
+    const btn = e.target.querySelector('.form-submit-btn');
+
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+    // Simulate sending (replace with real API call)
+    setTimeout(() => {
+        status.textContent = '✓ Message sent! I\'ll get back to you soon.';
+        status.className = 'form-status success';
+        e.target.reset();
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+        setTimeout(() => { status.textContent = ''; status.className = 'form-status'; }, 5000);
+    }, 1500);
+}
+
+// ── Init ───────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    initNavbar();
+    initTypedText();
+    initFadeIn();
+});
